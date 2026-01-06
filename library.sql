@@ -65,4 +65,61 @@ GROUP BY b.book_id, b.title, a.first_name, a.last_name
 ORDER BY borrow_count DESC
 LIMIT 5;
 
+-- PROBLEM(4)- Q4.Inactive Members
+-- List members who have never borrowed any book (no record in borrowed_books).
+-- QUERY 4: 
+
+SELECT 
+	
+	CONCAT(m.first_name,' ',m.last_name) AS member_name,
+    m.join_date
+FROM  members_table AS m
+LEFT JOIN  borrowed_books  AS br
+ON m.member_id = br.member_id
+WHERE borrow_date IS NULL
+GROUP BY m.member_id, m.first_name, m.last_name, m.join_date
+ORDER BY m.join_date ASC
+;
+
+-- FOR THIS QUESTION, 'NOT EXISTS' CAN ALSO BE USED
+
+-- QUERY(4) THIS QUERY INVOLVES THE USE OF A SUBQUERY IN MYSQL
+
+SELECT
+    CONCAT(first_name, ' ', last_name) AS member_name,
+    join_date
+FROM members_table
+WHERE member_id NOT IN (
+    SELECT DISTINCT member_id 
+    FROM borrowed_books 
+    WHERE member_id IS NOT NULL
+)
+ORDER BY join_date ASC;
+
+-- PROBLEM(5)- Q5.Top Authors by Popularity
+-- Rank authors by total number of times their books were borrowed. Show the author's full name and total borrows.
+-- QUERY(5) 
+
+SELECT 
+CONCAT(a.first_name,' ',a.last_name) AS author_name,
+COUNT(br.book_id) AS total_borrows
+FROM borrowed_books AS br
+JOIN books_table AS b ON br.book_id = b.book_id
+JOIN authors_table AS a ON b.author_id = a.author_id 
+GROUP BY a.author_id, a.first_name, a.last_name
+ORDER BY total_borrows DESC
+LIMIT 10;
+
+-- PROBLEM(5)- Q6.Books Never Borrowed
+-- Find all books that have never been borrowed (no entry in borrowed_books).
+
+
+
+
+
+
+
+
+
+
 
