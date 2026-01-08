@@ -97,12 +97,12 @@ WHERE member_id NOT IN (
 ORDER BY join_date ASC;
 
 -- PROBLEM(5)- Q5.Top Authors by Popularity
--- Rank authors by total number of times their books were borrowed. Show the author's full name and total borrows.
+-- Rank authors by the total number of times their books were borrowed. Show the author's full name and total borrows.
 -- QUERY(5) 
 
 SELECT 
-CONCAT(a.first_name,' ',a.last_name) AS author_name,
-COUNT(br.book_id) AS total_borrows
+	CONCAT(a.first_name,' ',a.last_name) AS author_name,
+	COUNT(br.book_id) AS total_borrows
 FROM borrowed_books AS br
 JOIN books_table AS b ON br.book_id = b.book_id
 JOIN authors_table AS a ON b.author_id = a.author_id 
@@ -110,16 +110,33 @@ GROUP BY a.author_id, a.first_name, a.last_name
 ORDER BY total_borrows DESC
 LIMIT 10;
 
--- PROBLEM(5)- Q6.Books Never Borrowed
+-- PROBLEM(6)- Q6.Books Never Borrowed
 -- Find all books that have never been borrowed (no entry in borrowed_books).
+-- QUERY(6) 
+
+SELECT 
+	b.title AS book_title,
+	CONCAT(a.first_name,' ',a.last_name) AS author_name,
+	b.copies_available 
+FROM books_table AS b
+LEFT JOIN borrowed_books AS br ON b.book_id = br.book_id
+JOIN authors_table AS a ON b.author_id = a.author_id
+WHERE br.book_id IS NULL
+ORDER BY copies_available DESC
+;
 
 
+-- PROBLEM(7)- Q7.Heavy Borrowers
+-- Show members who currently have more than 3 books borrowed (return_date IS NULL).
+-- QUERY(7) 
 
-
-
-
-
-
+SELECT 
+    CONCAT(m.first_name, ' ', m.last_name) AS member_name
+FROM members_table m
+JOIN borrowed_books br ON m.member_id = br.member_id
+WHERE br.return_date IS NULL
+GROUP BY m.member_id, m.first_name, m.last_name
+HAVING COUNT(br.book_id) > 3;
 
 
 
