@@ -138,5 +138,47 @@ WHERE br.return_date IS NULL
 GROUP BY m.member_id, m.first_name, m.last_name
 HAVING COUNT(br.book_id) > 3;
 
+-- PROBLEM(8)- Q8.Potential Fine Revenue
+-- Calculate potential fines for all overdue books. Assume ₹10 per day overdue. Show member name, book title, days overdue, and fine amount.
+-- QUERY(8) 
+
+SELECT 
+CONCAT(m.first_name,' ',m.last_name) AS  member_name,
+b.title AS book_title,
+br.due_date AS due_date,
+DATEDIFF('2026-1-08',br.due_date) AS days_overdue,
+DATEDIFF('2026-1-08',br.due_date) *10 AS total_fine_inr
+FROM borrowed_books br
+JOIN members_table m ON m.member_id = br.member_id
+JOIN books_table b ON br.book_id = b.book_id
+WHERE br.return_date IS NULL AND
+br.due_date <'2026-01-08'
+ORDER BY total_fine_inr DESC;
+
+-- PROBLEM(9)- -- Q9.Monthly Borrowing Trend
+-- Show the number of books borrowed each month (from borrow_date). Group by year and month.
+-- QUERY(9) 
+
+SELECT 
+	YEAR(br.borrow_date) AS year,
+	MONTH(br.borrow_date) AS borrow_month,
+	MONTHNAME(br.borrow_date) AS month_name,
+	COUNT(*) AS total_borrows
+FROM borrowed_books br
+WHERE br.borrow_date IS NOT NULL
+GROUP BY year,borrow_month,month_name
+ORDER BY year,borrow_month; 
 
 
+-- PROBLEM(10)- Q10.Most Diverse Readers
+-- Find the member(s) who have borrowed books from the largest number of different authors.
+-- QUERY(10)-Members who borrowed from the most diverse authors 
+
+SELECT 
+CONCAT(m.first_name,' ',m.last_name) AS member_name,
+COUNT(DISTINCT b.author_id) AS unique_authors
+FROM members_table m
+JOIN borrowed_books br ON m.member_id = br.member_id
+JOIN books_table b ON br.book_id = b.book_id
+GROUP BY m.member_id,m.first_name,m.last_name
+ORDER by unique_authors DESC;
