@@ -1,3 +1,7 @@
+-- Library Management System – Full SQL Script
+-- Created by [MANOHAR CHOUDHARY]
+-- For portfolio demonstration
+
 THIS FILE WILL HAVE MY SQL CODE:
 
 -- CREATE AND INSERT QUERIES :
