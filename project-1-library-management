@@ -1,1 +1,65 @@
-PROJECT FILES 
+# SQL Portfolio Project 1: Library Management System 📚
+
+**End-to-end MySQL database design, implementation, and advanced analysis**
+
+A complete relational database for a library that tracks authors, books, members, and borrowing history — built with realistic data (including Indian literature) and 10 practical business queries.
+
+### 🎯 Project Highlights
+- Relational database design with normalization (3NF) and foreign key constraints  
+- Realistic data population (English + Hindi literature authors)  
+- 10 real-world business queries demonstrating advanced SQL skills  
+- Clean, readable, and production-ready code
+
+### 🛠️ Tech Stack
+- **Database**: MySQL  
+- **Skills Demonstrated**:  
+  - Database design & ER diagramming  
+  - Multi-table JOINs (2–4 tables)  
+  - Aggregates, GROUP BY, HAVING  
+  - Date functions (DATEDIFF), string functions (CONCAT)  
+  - COUNT(DISTINCT), anti-joins (LEFT JOIN + IS NULL)  
+  - Business reporting logic (fines, trends, optimization)
+
+### 📊 Key Business Queries (All 10 included in library.sql)
+1. Currently borrowed books report  
+2. Overdue books with days late  
+3. Top 5 most borrowed books  
+4. Inactive members (never borrowed)  
+5. Authors ranked by total borrows  
+6. Books that have never been borrowed  
+7. Heavy borrowers (>3 active books)  
+8. Potential fine revenue calculation (₹10/day overdue)  
+9. Monthly borrowing trend analysis  
+10. Members with the most diverse authors (COUNT DISTINCT)
+
+### 🏗️ ER Diagram
+![Library Management System ER Diagram]()
+
+**Relationships**:
+- One Author → Many Books (1:N)  
+- One Book → Many Borrows (1:N)  
+- One Member → Many Borrows (1:N)
+
+### 📈 Sample Business Insights
+- **Revenue opportunity**: ₹150–₹300+ potential fines from overdue books (Jan 2026)  
+- **Stock optimization**: Several books with 3–5 copies have zero borrows → candidates for promotion or removal  
+- **Reader engagement**: Top members borrowed from 5+ different authors → ideal for personalized recommendations
+
+### How to Run the Project
+1. Create database: `CREATE DATABASE sql_portfolio_database;.`
+2. Use MySQL Workbench / CLI / phpMyAdmin
+3. Run full script: `library.sql` (contains schema + data + all queries)
+4. Explore the results of the 10 queries
+
+### Future Enhancements (Planned)
+- Window functions for rankings and running totals  
+- Triggers for automatic fine tracking  
+- Integration with Python (Pandas) or Power BI for visualization
+
+### 📬 Let's Connect!
+I'm passionate about turning data into actionable insights through SQL.  
+Open to feedback, collaborations, or entry-level Data Analyst / SQL Developer roles!
+
+[LinkedIn Profile- www.linkedin.com/in/manohar-choudhary] | [Email: choudharydav037@gmail.com]
+
+#SQL #MySQL #DatabaseDesign #DataAnalysis #PortfolioProject #DataAnalyst #BusinessIntelligence
