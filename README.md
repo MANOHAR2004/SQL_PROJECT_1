@@ -35,13 +35,19 @@ Designed and implemented a relational database for a library system to track aut
 ### Sample query results(screanshots)
 ### Sample Query Results
 **Overdue Books Report (Query 2)**  
-![Overdue Books](<img width="706" height="638" alt="query_2" src="https://github.com/user-attachments/assets/6fd7d0b2-0495-4be4-80ea-4ffca1b4e0d9" />
+![Overdue Books](<img width="706" height="638" alt="query_2" src="https://github.com/user-attachments/assets/fe295dcd-7be8-49bf-857b-d3f1bd354386" />
+
 )
 
 **Potential Fine Calculation (Query 8)**  
-![Fines Calculation](<img width="796" height="678" alt="duedate_query_result" src="https://github.com/user-attachments/assets/176962ca-6dbc-48a6-8da3-80c89f9be0cf" />
+![Fines Calculation](<img width="796" height="678" alt="duedate_query_result" src="https://github.com/user-attachments/assets/4ef2185f-f3d6-462a-b621-4142f1a1fb64" />
+
+
+![Uploading duedate_query_result.png…]()
+
 )
 
 **Monthly Borrowing Trend (Query 9)**  
-![Monthly Trend](<img width="1110" height="696" alt="query_9" src="https://github.com/user-attachments/assets/6fa32595-bacd-4b99-8ce0-ff2c5a11757d" />
+![Monthly Trend](<img width="1110" height="696" alt="query_9" src="https://github.com/user-attachments/assets/08ede466-b4cc-4e37-90a7-24119d127eb3" />
+
 )
