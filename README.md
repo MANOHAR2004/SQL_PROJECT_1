@@ -32,3 +32,16 @@ Designed and implemented a relational database for a library system to track aut
 
 <img width="781" height="756" alt="Library Management System – ER Diagram drawio" src="https://github.com/user-attachments/assets/41f09405-39a8-4748-bff6-43debaeb3ba4" />
 
+### Sample query results(screanshots)
+### Sample Query Results
+**Overdue Books Report (Query 2)**  
+![Overdue Books](<img width="706" height="638" alt="query_2" src="https://github.com/user-attachments/assets/6fd7d0b2-0495-4be4-80ea-4ffca1b4e0d9" />
+)
+
+**Potential Fine Calculation (Query 8)**  
+![Fines Calculation](<img width="796" height="678" alt="duedate_query_result" src="https://github.com/user-attachments/assets/176962ca-6dbc-48a6-8da3-80c89f9be0cf" />
+)
+
+**Monthly Borrowing Trend (Query 9)**  
+![Monthly Trend](<img width="1110" height="696" alt="query_9" src="https://github.com/user-attachments/assets/6fa32595-bacd-4b99-8ce0-ff2c5a11757d" />
+)
