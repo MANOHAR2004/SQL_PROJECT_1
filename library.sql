@@ -1,6 +1,7 @@
 -- Library Management System – Full SQL Script
 -- Created by [MANOHAR CHOUDHARY]
--- For portfolio demonstration
+-- Date- 1/10/2026
+-- For portfolio demonstration(Project1)
 
 THIS FILE WILL HAVE MY SQL CODE:
 
