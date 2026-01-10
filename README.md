@@ -28,4 +28,7 @@ Designed and implemented a relational database for a library system to track aut
 9. Monthly borrowing trend analysis  
 10. Members who borrowed from the most diverse authors (COUNT DISTINCT)
 
-### 🏗️ Database Schema (ER Diagram – Text Version)
+### 🏗️ Database Schema (ER Diagram)
+
+<img width="781" height="756" alt="Library Management System – ER Diagram drawio" src="https://github.com/user-attachments/assets/41f09405-39a8-4748-bff6-43debaeb3ba4" />
+
