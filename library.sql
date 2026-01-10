@@ -155,6 +155,8 @@ WHERE br.return_date IS NULL AND
 br.due_date <'2026-01-08'
 ORDER BY total_fine_inr DESC;
 
+
+
 -- PROBLEM(9)- -- Q9.Monthly Borrowing Trend
 -- Show the number of books borrowed each month (from borrow_date). Group by year and month.
 -- QUERY(9) 
