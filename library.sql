@@ -1,4 +1,139 @@
 THIS FILE WILL HAVE MY SQL CODE:
+
+-- CREATE AND INSERT QUERIES :
+CREATE DATABASE sql_portfolio_database;
+
+USE sql_portfolio_database;
+
+CREATE TABLE authors_table (
+    author_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    birth_year YEAR
+);
+
+CREATE TABLE books_table (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    publish_year YEAR NOT NULL,
+    author_id INT NOT NULL,
+    copies_available SMALLINT,
+    FOREIGN KEY (author_id)
+        REFERENCES authors_table(author_id)
+);
+
+CREATE TABLE members_table (
+    member_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    join_date DATE
+);
+
+ALTER TABLE authors_table 
+MODIFY birth_year INT; 
+
+ALTER TABLE books_table 
+MODIFY publish_year INT;
+
+ALTER TABLE members_table
+ADD email VARCHAR(100);
+
+CREATE TABLE borrowed_books (
+    borrow_id INT AUTO_INCREMENT PRIMARY KEY,
+    book_id INT NOT NULL,
+    member_id INT NOT NULL,
+    borrow_date DATE,
+    due_date DATE,
+    return_date DATE,
+    FOREIGN KEY (book_id) REFERENCES books_table(book_id),
+    FOREIGN KEY (member_id) REFERENCES members_table(member_id)
+);
+
+
+ INSERT INTO authors_table (author_id, first_name, last_name, birth_year) 
+ VALUES
+(1, 'Jane', 'Austen', 1775),
+(2, 'George', 'Orwell', 1903),
+(3, 'J.K.', 'Rowling', 1965),
+(4, 'Agatha', 'Christie', 1890),
+(5, 'Mark', 'Twain', 1835),
+(6, 'Harper', 'Lee', 1926),
+(7, 'Munshi', 'Premchand', 1880),
+(8, 'Nagarjun', 'Vaidyanath Mishra', 1911),
+(9, 'Rabindranath', 'Tagore', 1861),
+(10, 'R.K.', 'Narayan', 1906),
+(11, 'Mahadevi', 'Varma', 1907);
+
+INSERT INTO books_table(book_id, title, publish_year, author_id, copies_available) VALUES
+(1, 'Pride and Prejudice', 1813, 1, 3),
+(2, 'Sense and Sensibility', 1811, 1, 2),
+(3, '1984', 1949, 2, 0),
+(4, 'Animal Farm', 1945, 2, 1),
+(5, 'Harry Potter and the Philosopher''s Stone', 1997, 3, 1),
+(6, 'Harry Potter and the Chamber of Secrets', 1998, 3, 0),
+(7, 'Harry Potter and the Prisoner of Azkaban', 1999, 3, 2),
+(8, 'Murder on the Orient Express', 1934, 4, 4),
+(9, 'And Then There Were None', 1939, 4, 0),
+(10, 'The Adventures of Huckleberry Finn', 1884, 5, 2),
+(11, 'The Adventures of Tom Sawyer', 1876, 5, 3),
+(12, 'To Kill a Mockingbird', 1960, 6, 1),
+(13, 'Godaan', 1936, 7, 4),
+(14, 'Gaban', 1931, 7, 2),
+(15, 'Rashmirathi', 1952, 8, 3),
+(16, 'Gitanjali', 1910, 9, 5),
+(17, 'Malgudi Days', 1943, 10, 2),
+(18, 'Yama', 1930, 11, 1);
+
+INSERT INTO members_table (member_id, first_name, last_name, join_date, email) VALUES
+(1, 'Alice', 'Johnson', '2024-01-15', 'alice@email.com'),
+(2, 'Bob', 'Smith', '2024-02-20', 'bob@email.com'),
+(3, 'Carol', 'Davis', '2024-03-10', 'carol@email.com'),
+(4, 'David', 'Wilson', '2024-04-05', 'david@email.com'),
+(5, 'Eva', 'Brown', '2024-05-12', 'eva@email.com'),
+(6, 'Frank', 'Miller', '2024-06-18', 'frank@email.com'),
+(7, 'Grace', 'Taylor', '2024-07-22', 'grace@email.com'),
+(8, 'Henry', 'Anderson', '2024-08-30', 'henry@email.com'),
+(9, 'Ivy', 'Thomas', '2024-09-14', 'ivy@email.com'),
+(10, 'Jack', 'White', '2024-10-01', 'jack@email.com'),
+(11, 'Rahul', 'Sharma', '2024-10-10', 'rahul@email.com'),
+(12, 'Priya', 'Verma', '2024-10-12', 'priya@email.com'),
+(13, 'Amit', 'Kumar', '2024-10-15', 'amit@email.com'),
+(14, 'Neha', 'Singh', '2024-10-18', 'neha@email.com'),
+(15, 'Anjali', 'Patel', '2024-10-20', 'anjali@email.com');
+
+
+INSERT INTO borrowed_books (borrow_id, book_id, member_id, borrow_date, due_date, return_date) VALUES
+-- Currently borrowed (return_date NULL)
+(1, 1, 1, '2025-12-01', '2026-01-04', NULL),        -- Alice - Pride (due today!)
+(2, 3, 2, '2025-12-15', '2026-01-18', NULL),        -- Bob - 1984
+(3, 5, 3, '2025-12-20', '2026-01-23', NULL),        -- Carol - Harry Potter 1
+(4, 8, 4, '2025-12-25', '2026-01-28', NULL),        -- David - Murder Orient
+(5, 10, 5, '2026-01-01', '2026-02-04', NULL),       -- Eva - Huckleberry
+
+-- Overdue (due_date < 2026-01-04, return_date NULL)
+(6, 9, 6, '2025-11-20', '2025-12-24', NULL),        -- Frank - And Then There Were None (OVERDUE)
+(7, 6, 7, '2025-11-25', '2025-12-29', NULL),        -- Grace - Harry Potter 2 (OVERDUE)
+
+-- Returned on time
+(8, 2, 1, '2025-11-10', '2025-12-14', '2025-12-12'), -- Alice returned early
+(9, 4, 2, '2025-11-15', '2025-12-19', '2025-12-18'), -- Bob
+(10, 7, 3, '2025-11-20', '2025-12-24', '2025-12-23'),-- Carol
+(11, 11, 4, '2025-11-25', '2025-12-29', '2025-12-28'), -- David
+
+-- Returned late
+(12, 12, 5, '2025-11-05', '2025-12-09', '2025-12-15'), -- Eva late
+(13, 1, 6, '2025-11-01', '2025-12-05', '2025-12-10'),  -- Frank late
+
+-- Multiple borrows by the same member
+(14, 3, 1, '2025-11-30', '2025-12-04', '2025-12-03'),  -- Alice borrowed 1984 early
+(15, 5, 2, '2025-12-10', '2025-12-14', '2025-12-13'),  -- Bob
+(16, 8, 3, '2025-12-05', '2025-12-09', '2025-12-08'),  -- Carol
+(17, 9, 8, '2025-11-28', '2025-12-02', '2025-12-01'),  -- Henry
+(18, 10, 9, '2025-12-28', '2026-01-01', '2026-01-02'), -- Ivy late
+(19, 4, 10, '2025-12-22', '2026-01-25', '2026-01-24'), -- Jack
+(20, 12, 7, '2025-12-28', '2026-01-31', '2026-01-30');  -- Grace
+
+	
 -- 10 BUSINESS PROBLEMS HAVE TO BE SOLVED.
 
 -- Q1.Currently Borrowed Books Report
