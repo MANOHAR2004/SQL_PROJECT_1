@@ -1,9 +1,23 @@
-Quick Tips Before Posting
+### 🏗️ Database Schema (ER Diagram)
 
-Replace[YourUsername] with your actual GitHub username.
-Add 4–5 images to the post (LinkedIn loves visuals):
-Your ER diagram
-Screenshot of overdue books + fines table (Query 8)
-Screenshot of monthly trend (Query 9)
-Screenshot of top authors or diverse readers
-GitHub repo preview
+<img width="781" height="756" alt="Library Management System – ER Diagram drawio" src="https://github.com/user-attachments/assets/41f09405-39a8-4748-bff6-43debaeb3ba4" />
+
+### Sample query results(screanshots)
+### Sample Query Results
+**Overdue Books Report (Query 2)**  
+![Overdue Books](<img width="706" height="638" alt="query_2" src="https://github.com/user-attachments/assets/fe295dcd-7be8-49bf-857b-d3f1bd354386" />
+
+)
+
+**Potential Fine Calculation (Query 8)**  
+![Fines Calculation](<img width="796" height="678" alt="duedate_query_result" src="https://github.com/user-attachments/assets/4ef2185f-f3d6-462a-b621-4142f1a1fb64" />
+
+
+![Uploading duedate_query_result.png…]()
+
+)
+
+**Monthly Borrowing Trend (Query 9)**  
+![Monthly Trend](<img width="1110" height="696" alt="query_9" src="https://github.com/user-attachments/assets/08ede466-b4cc-4e37-90a7-24119d127eb3" />
+
+)
