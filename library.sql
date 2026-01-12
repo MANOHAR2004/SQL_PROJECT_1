@@ -2,47 +2,40 @@
 -- Created by [MANOHAR CHOUDHARY]
 -- Date- 1/10/2026
 -- For portfolio demonstration(Project1)
+-- ================================================
 
-THIS FILE WILL HAVE MY SQL CODE:
-
--- CREATE AND INSERT QUERIES :
+-- 1. Database Creation (run once)
 CREATE DATABASE sql_portfolio_database;
 
 USE sql_portfolio_database;
 
+-- 2. Table Creation ()
+-- CREATE TABLE authors_table (
 CREATE TABLE authors_table (
     author_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
-    birth_year YEAR
+    birth_year INT
 );
-
+-- CREATE TABLE books_table (
 CREATE TABLE books_table (
     book_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(150) NOT NULL,
-    publish_year YEAR NOT NULL,
+    publish_year INT NOT NULL,
     author_id INT NOT NULL,
     copies_available SMALLINT,
     FOREIGN KEY (author_id)
         REFERENCES authors_table(author_id)
 );
-
+-- CREATE TABLE members_table (
 CREATE TABLE members_table (
     member_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
-    join_date DATE
+    join_date DATE,
+	email VARCHAR(100)
 );
-
-ALTER TABLE authors_table 
-MODIFY birth_year INT; 
-
-ALTER TABLE books_table 
-MODIFY publish_year INT;
-
-ALTER TABLE members_table
-ADD email VARCHAR(100);
-
+-- CREATE TABLE borrowed_books (
 CREATE TABLE borrowed_books (
     borrow_id INT AUTO_INCREMENT PRIMARY KEY,
     book_id INT NOT NULL,
@@ -54,6 +47,7 @@ CREATE TABLE borrowed_books (
     FOREIGN KEY (member_id) REFERENCES members_table(member_id)
 );
 
+-- 3. Data Insertion (
 
  INSERT INTO authors_table (author_id, first_name, last_name, birth_year) 
  VALUES
@@ -74,7 +68,7 @@ INSERT INTO books_table(book_id, title, publish_year, author_id, copies_availabl
 (2, 'Sense and Sensibility', 1811, 1, 2),
 (3, '1984', 1949, 2, 0),
 (4, 'Animal Farm', 1945, 2, 1),
-(5, 'Harry Potter and the Philosopher''s Stone', 1997, 3, 1),
+(5, 'Harry Potter and the Philosopher Stone', 1997, 3, 1),
 (6, 'Harry Potter and the Chamber of Secrets', 1998, 3, 0),
 (7, 'Harry Potter and the Prisoner of Azkaban', 1999, 3, 2),
 (8, 'Murder on the Orient Express', 1934, 4, 4),
@@ -138,7 +132,22 @@ INSERT INTO borrowed_books (borrow_id, book_id, member_id, borrow_date, due_date
 (19, 4, 10, '2025-12-22', '2026-01-25', '2026-01-24'), -- Jack
 (20, 12, 7, '2025-12-28', '2026-01-31', '2026-01-30');  -- Grace
 
-	
+
+
+-- WRITE ALTER TABLE QURIES IF TABLE DOES NOT MEET YOUR EXPECTATION AND ADD COLUMNS THAT YOU LIKE(YOU CAN MAKE ALL THESE TABLES YOUR OWN):
+
+ALTER TABLE authors_table 
+MODIFY birth_year INT; 
+
+ALTER TABLE books_table 
+MODIFY publish_year INT;
+
+ALTER TABLE members_table
+ADD email VARCHAR(100);
+
+
+-- 4. Business Queries
+
 -- 10 BUSINESS PROBLEMS HAVE TO BE SOLVED.
 
 -- Q1.Currently Borrowed Books Report
@@ -161,6 +170,10 @@ INSERT INTO borrowed_books (borrow_id, book_id, member_id, borrow_date, due_date
 -- Show the number of books borrowed each month (from borrow_date). Group by year and month.
 -- Q10.Most Diverse Readers
 -- Find the member(s) who have borrowed books from the largest number of different authors.
+
+
+
+
 
 -- PROBLEM(1)- Q1.Currently Borrowed Books Report
 -- List all books that are currently out (not returned) with book title, member full name, borrow date, and due date. Order by due date (soonest first).
