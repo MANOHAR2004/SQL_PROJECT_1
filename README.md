@@ -43,8 +43,6 @@ Designed and implemented a relational database for a library system to track aut
 ![Fines Calculation](<img width="796" height="678" alt="duedate_query_result" src="https://github.com/user-attachments/assets/4ef2185f-f3d6-462a-b621-4142f1a1fb64" />
 
 
-![Uploading duedate_query_result.png…]()
-
 )
 
 **Monthly Borrowing Trend (Query 9)**  
